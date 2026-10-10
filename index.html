@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fonts & Media Hub — English • اردو • عربي</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&family=Montserrat:wght@400;700&family=Space+Grotesk:wght@400;600&family=Noto+Nastaliq+Urdu:wght@400;600&family=Gulzar&family=Lateef&family=Amiri:wght@400;700&family=Cairo:wght@400;700&family=Reem+Kufi:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#07070c;
+  --bg-soft:#0d0d17;
+  --header-bg:rgba(7,7,12,.72);
+  --card:rgba(255,255,255,.045);
+  --card-brd:rgba(255,255,255,.10);
+  --txt:#eef0f6;
+  --muted:#959bb4;
+  --a1:#7c5cff;
+  --a2:#00e0c6;
+  --a3:#ffb547;
+  --radius:18px;
+  --shadow:0 20px 45px -22px rgba(0,0,0,.9);
+}
+[data-theme="light"]{
+  --bg:#f4f5fa;
+  --bg-soft:#ffffff;
+  --header-bg:rgba(244,245,250,.78);
+  --card:rgba(255,255,255,.85);
+  --card-brd:rgba(20,25,50,.10);
+  --txt:#12142b;
+  --muted:#5d6382;
+  --shadow:0 20px 45px -25px rgba(30,35,80,.35);
+}
+
+/* ============ BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  min-height:100vh;
+  overflow-x:hidden;
+  transition:background .45s ease,color .45s ease;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--a1);color:#fff}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--a1),var(--a2));border-radius:20px;border:3px solid var(--bg)}
+
+/* ============ BACKGROUND ORBS ============ */
+.orb{
+  position:fixed;border-radius:50%;filter:blur(95px);
+  pointer-events:none;z-index:0;opacity:.45;
+  animation:float 20s ease-in-out infinite;
+  transition:opacity .5s;
+}
+.orb.a{width:430px;height:430px;background:var(--a1);top:-140px;left:-120px}
+.orb.b{width:400px;height:400px;background:var(--a2);bottom:-160px;right:-100px;animation-delay:-7s}
+.orb.c{width:320px;height:320px;background:var(--a3);top:45%;left:58%;opacity:.22;animation-delay:-13s}
+[data-theme="light"] .orb{opacity:.22}
+@keyframes float{50%{transform:translate(45px,-45px) scale(1.12)}}
+
+/* ============ HEADER ============ */
+header{
+  position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:var(--header-bg);
+  border-bottom:1px solid var(--card-brd);
+}
+.nav{
+  max-width:1220px;margin:0 auto;padding:14px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:1.12rem;letter-spacing:-.02em}
+.logo-mark{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  font-size:1.15rem;font-weight:700;color:#fff;
+  box-shadow:0 8px 22px -8px var(--a1);
+  animation:pulseGlow 4s ease-in-out infinite;
+}
+@keyframes pulseGlow{50%{box-shadow:0 8px 34px -6px var(--a2)}}
+.logo small{display:block;font-size:.66rem;font-weight:400;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+
+.theme-btn{
+  width:42px;height:42px;border-radius:12px;cursor:pointer;
+  border:1px solid var(--card-brd);background:var(--card);
+  color:var(--txt);font-size:1.1rem;display:grid;place-items:center;
+  transition:.3s;backdrop-filter:blur(8px);
+}
+.theme-btn:hover{transform:rotate(20deg) scale(1.08);border-color:var(--a1);color:var(--a1)}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;z-index:1;
+  max-width:1220px;margin:0 auto;padding:70px 22px 34px;text-align:center;
+}
+.hero h1{
+  font-size:clamp(2.1rem,5.4vw,3.9rem);
+  font-weight:700;line-height:1.1;letter-spacing:-.035em;margin-bottom:16px;
+}
+.hero h1 .grad{
+  background:linear-gradient(100deg,var(--a1) 0%,var(--a2) 45%,var(--a3) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;animation:shine 6s linear infinite;
+}
+@keyframes shine{to{background-position:200% center}}
+.hero p{color:var(--muted);font-size:clamp(.95rem,2vw,1.1rem);max-width:600px;margin:0 auto 30px;line-height:1.6}
+.hero .script{
+  display:block;font-size:.5em;margin-top:8px;
+  font-family:'Noto Nastaliq Urdu','Gulzar',serif;line-height:2.2;
+}
+
+/* ============ SEARCH ============ */
+.search-wrap{position:relative;max-width:560px;margin:0 auto}
+.search-wrap svg{
+  position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  width:19px;height:19px;stroke:var(--muted);fill:none;stroke-width:2;pointer-events:none;
+}
+#search{
+  width:100%;padding:16px 52px 16px 50px;
+  border-radius:16px;border:1px solid var(--card-brd);
+  background:var(--card);color:var(--txt);
+  font-family:inherit;font-size:.98rem;outline:none;
+  backdrop-filter:blur(12px);transition:.3s;
+}
+#search::placeholder{color:var(--muted)}
+#search:focus{
+  border-color:var(--a1);
+  box-shadow:0 0 0 4px rgba(124,92,255,.16),0 14px 34px -18px var(--a1);
+}
+.clear-btn{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  border:0;background:transparent;color:var(--muted);
+  font-size:1.3rem;cursor:pointer;line-height:1;display:none;
+}
+.clear-btn:hover{color:var(--a1)}
+
+/* ============ FILTERS ============ */
+.filters{
+  position:relative;z-index:1;
+  max-width:1220px;margin:0 auto;padding:26px 22px 6px;
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+}
+.chip{
+  padding:10px 20px;border-radius:100px;cursor:pointer;
+  border:1px solid var(--card-brd);background:var(--card);
+  color:var(--muted);font-family:inherit;font-size:.87rem;font-weight:500;
+  transition:.3s;backdrop-filter:blur(10px);white-space:nowrap;
+}
+.chip:hover{color:var(--txt);transform:translateY(-2px);border-color:var(--a1)}
+.chip.active{
+  color:#fff;border-color:transparent;
+  background:linear-gradient(120deg,var(--a1),var(--a2));
+  box-shadow:0 12px 26px -12px var(--a1);
+}
+.chip .count{
+  font-size:.72rem;opacity:.7;margin-left:7px;
+  background:rgba(255,255,255,.16);padding:1px 7px;border-radius:20px;
+}
+
+/* ============ GRID ============ */
+.grid{
+  position:relative;z-index:1;
+  max-width:1220px;margin:0 auto;padding:28px 22px 90px;
+  display:grid;gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+}
+
+/* ============ CARD ============ */
+.card{
+  position:relative;display:flex;flex-direction:column;gap:13px;
+  padding:18px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--card-brd);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .38s;
+  animation:pop .5s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes pop{from{opacity:0;transform:translateY(18px)}}
+.card:hover{
+  transform:translateY(-7px);
+  border-color:color-mix(in srgb,var(--a1) 60%,transparent);
+  box-shadow:0 26px 50px -24px var(--a1);
+}
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);
+  padding:1px;background:linear-gradient(135deg,var(--a1),var(--a2),var(--a3));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.card:hover::after{opacity:1}
+
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.badge{
+  font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 11px;border-radius:100px;border:1px solid;
+}
+.badge.en{color:#8ab4ff;border-color:rgba(138,180,255,.35);background:rgba(138,180,255,.10)}
+.badge.ur{color:#ffb547;border-color:rgba(255,181,71,.35);background:rgba(255,181,71,.10);font-family:'Noto Nastaliq Urdu',serif;text-transform:none;letter-spacing:0;padding:2px 11px 8px}
+.badge.ar{color:#00e0c6;border-color:rgba(0,224,198,.35);background:rgba(0,224,198,.10);font-family:'Noto Naskh Arabic',serif;text-transform:none;letter-spacing:0}
+.badge.sound{color:#ff8fb1;border-color:rgba(255,143,177,.35);background:rgba(255,143,177,.10)}
+.badge.video{color:#b78cff;border-color:rgba(183,140,255,.35);background:rgba(183,140,255,.10)}
+
+.icon-dot{width:9px;height:9px;border-radius:50%;background:var(--a2);box-shadow:0 0 10px var(--a2);animation:blink 2.4s infinite}
+@keyframes blink{50%{opacity:.28}}
+
+/* Font preview */
+.preview{
+  border-radius:14px;padding:16px 12px;text-align:center;
+  background:linear-gradient(135deg,rgba(124,92,255,.13),rgba(0,224,198,.07));
+  border:1px dashed var(--card-brd);
+  font-size:1.55rem;line-height:1.35;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  transition:.3s;
+}
+.card:hover .preview{background:linear-gradient(135deg,rgba(124,92,255,.2),rgba(0,224,198,.12))}
+.preview.ur{font-size:1.6rem;line-height:2.6;direction:rtl}
+.preview.ar{font-size:1.75rem;line-height:2;direction:rtl}
+
+/* Card text */
+.card h3{font-size:1.02rem;font-weight:600;letter-spacing:-.01em}
+.card .desc{font-size:.84rem;color:var(--muted);line-height:1.55;flex:1}
+
+/* Audio */
+audio{width:100%;height:38px;border-radius:10px;outline:none;filter:saturate(.9)}
+audio::-webkit-media-controls-panel{background:rgba(124,92,255,.18)}
+
+/* Video thumb */
+.thumb{
+  position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,#1b1b33,#0d0d1a);
+  display:grid;place-items:center;border:1px solid var(--card-brd);
+}
+[data-theme="light"] .thumb{background:linear-gradient(135deg,#e6e7f5,#f7f7fd)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.play-ring{
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  color:#fff;font-size:1rem;padding-left:4px;
+  box-shadow:0 0 0 0 rgba(124,92,255,.6);
+  animation:ring 2.4s infinite;
+}
+@keyframes ring{
+  0%{box-shadow:0 0 0 0 rgba(124,92,255,.55)}
+  70%{box-shadow:0 0 0 22px rgba(124,92,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(124,92,255,0)}
+}
+
+/* Actions */
+.actions{display:flex;gap:9px;margin-top:2px}
+.btn{
+  flex:1;padding:10px 14px;border-radius:11px;cursor:pointer;
+  font-family:inherit;font-size:.82rem;font-weight:600;text-align:center;
+  text-decoration:none;border:1px solid transparent;transition:.28s;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn-primary{
+  background:linear-gradient(120deg,var(--a1),var(--a2));color:#fff;
+  box-shadow:0 10px 24px -14px var(--a1);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--a2)}
+.btn-ghost{
+  flex:0 0 auto;padding:10px 13px;
+  background:transparent;border-color:var(--card-brd);color:var(--muted);
+}
+.btn-ghost:hover{color:var(--a1);border-color:var(--a1);transform:translateY(-2px)}
+
+/* ============ EMPTY ============ */
+.empty{
+  grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--muted);
+}
+.empty .big{font-size:2.6rem;margin-bottom:14px;opacity:.5}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;left:50%;bottom:32px;transform:translate(-50%,120%);
+  background:linear-gradient(120deg,var(--a1),var(--a2));
+  color:#fff;padding:13px 26px;border-radius:100px;
+  font-size:.86rem;font-weight:600;z-index:200;
+  box-shadow:0 20px 40px -18px var(--a1);
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.3);
+  pointer-events:none;
+}
+.toast.show{transform:translate(-50%,0)}
+
+/* ============ FOOTER ============ */
+footer{
+  position:relative;z-index:1;text-align:center;
+  padding:34px 22px 44px;border-top:1px solid var(--card-brd);
+  color:var(--muted);font-size:.84rem;
+}
+footer .scripts{
+  margin-top:10px;font-size:1.15rem;letter-spacing:.05em;
+  display:flex;gap:22px;justify-content:center;flex-wrap:wrap;
+}
+footer .scripts span:first-child{font-family:'Noto Nastaliq Urdu',serif;line-height:2}
+footer .scripts span:last-child{font-family:'Amiri',serif}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:640px){
+  .hero{padding:48px 18px 26px}
+  .grid{padding:22px 16px 70px;grid-template-columns:1fr}
+  .filters{padding:20px 16px 4px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .logo small{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="orb a"></div>
+<div class="orb b"></div>
+<div class="orb c"></div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-mark">Aa</div>
+      <div>
+        Fonts &amp; Media Hub
+        <small>English • اردو • عربي</small>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <h1>
+    My <span class="grad">Fonts</span> &amp; Media Library
+    <span class="script">فونٹس، آوازیں اور ویڈیوز</span>
+  </h1>
+  <p>A curated collection of English, Urdu and Arabic typefaces — plus sound and video links, all in one place.</p>
+
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="text" id="search" placeholder="Search fonts, sounds, videos…" autocomplete="off" />
+    <button class="clear-btn" id="clearBtn" aria-label="Clear search">×</button>
+  </div>
+</section>
+
+<!-- ================= FILTERS ================= -->
+<div class="filters" id="filters"></div>
+
+<!-- ================= GRID ================= -->
+<main class="grid" id="grid"></main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div>Built with ♥ — replace the links in the <code>DATA</code> array with your own.</div>
+  <div class="scripts">
+    <span>اردو</span>
+    <span>العربية</span>
+    <span>English</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Link copied!</div>
+
+<script>
+/* =========================================================
+   1. YOUR DATA  —  edit / add / remove items here
+   cat: 'font-en' | 'font-ur' | 'font-ar' | 'sound' | 'video'
+   ========================================================= */
+const DATA = [
+
+  /* ---------- ENGLISH FONTS ---------- */
+  {
+    cat: 'font-en',
+    title: 'Poppins',
+    desc: 'Geometric sans-serif. Great for modern headings & UI.',
+    url: 'https://fonts.google.com/specimen/Poppins',
+    font: "'Poppins', sans-serif",
+    text: 'The quick brown fox'
+  },
+  {
+    cat: 'font-en',
+    title: 'Playfair Display',
+    desc: 'High-contrast serif with an elegant editorial feel.',
+    url: 'https://fonts.google.com/specimen/Playfair+Display',
+    font: "'Playfair Display', serif",
+    text: 'Elegance in every letter'
+  },
+  {
+    cat: 'font-en',
+    title: 'Inter',
+    desc: 'Neutral, highly legible UI typeface for screens.',
+    url: 'https://fonts.google.com/specimen/Inter',
+    font: "'Inter', sans-serif",
+    text: 'Clean and readable'
+  },
+  {
+    cat: 'font-en',
+    title: 'Montserrat',
+    desc: 'Bold geometric sans, perfect for posters and logos.',
+    url: 'https://fonts.google.com/specimen/Montserrat',
+    font: "'Montserrat', sans-serif",
+    text: 'Bold &amp; Beautiful'
+  },
+  {
+    cat: 'font-en',
+    title: 'Space Grotesk',
+    desc: 'Techy, characterful sans with quirky details.',
+    url: 'https://fonts.google.com/specimen/Space+Grotesk',
+    font: "'Space Grotesk', sans-serif",
+    text: 'Future is now'
+  },
+
+  /* ---------- URDU FONTS ---------- */
+  {
+    cat: 'font-ur',
+    title: 'Noto Nastaliq Urdu',
+    desc: 'The classic Nastaliq style — beautiful flowing Urdu calligraphy.',
+    url: 'https://fonts.google.com/specimen/Noto+Nastaliq+Urdu',
+    font: "'Noto Nastaliq Urdu', serif",
+    text: 'اردو زبان کی خوبصورتی'
+  },
+  {
+    cat: 'font-ur',
+    title: 'Gulzar',
+    desc: 'Elegant Nastaliq typeface designed for long Urdu text.',
+    url: 'https://fonts.google.com/specimen/Gulzar',
+    font: "'Gulzar', serif",
+    text: 'خوبصورت اردو تحریر'
+  },
+  {
+    cat: 'font-ur',
+    title: 'Lateef',
+    desc: 'Wide, clear Naskh-style Urdu font — great for reading.',
+    url: 'https://fonts.google.com/specimen/Lateef',
+    font: "'Lateef', serif",
+    text: 'آسان اور صاف اردو'
+  },
+
+  /* ---------- ARABIC FONTS ---------- */
+  {
+    cat: 'font-ar',
+    title: 'Amiri',
+    desc: 'Classical Naskh revival based on the Bulaq Press typeface.',
+    url: 'https://fonts.google.com/specimen/Amiri',
+    font: "'Amiri', serif",
+    text: 'الخط العربي الأصيل'
+  },
+  {
+    cat: 'font-ar',
+    title: 'Cairo',
+    desc: 'Modern Arabic sans-serif with a clean Latin companion.',
+    url: 'https://fonts.google.com/specimen/Cairo',
+    font: "'Cairo', sans-serif",
+    text: 'تصميم عصري أنيق'
+  },
+  {
+    cat: 'font-ar',
+    title: 'Reem Kufi',
+    desc: 'Geometric Kufic style — bold and decorative.',
+    url: 'https://fonts.google.com/specimen/Reem+Kufi',
+    font: "'Reem Kufi', sans-serif",
+    text: 'كوفي هندسي جميل'
+  },
+  {
+    cat: 'font-ar',
+    title: 'Noto Naskh Arabic',
+    desc: 'Reliable Naskh font for body text and long paragraphs.',
+    url: 'https://fonts.google.com/specimen/Noto+Naskh+Arabic',
+    font: "'Noto Naskh Arabic', serif",
+    text: 'نص عربي واضح'
+  },
+
+  /* ---------- SOUNDS ---------- */
+  {
+    cat: 'sound',
+    title: 'Ambient Demo Track',
+    desc: 'Sample audio — replace with your own MP3 link.',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    audio: true
+  },
+  {
+    cat: 'sound',
+    title: 'Background Loop',
+    desc: 'Soft background loop for intros and reels.',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    audio: true
+  },
+  {
+    cat: 'sound',
+    title: 'Upbeat Soundtrack',
+    desc: 'Energetic track for promotional videos.',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    audio: true
+  },
+
+  /* ---------- VIDEOS ---------- */
+  {
+    cat: 'video',
+    title: 'Urdu Calligraphy Showcase',
+    desc: 'A visual walkthrough of Nastaliq letterforms.',
+    url: 'https://www.youtube.com/',
+    thumb: ''   /* put an image URL here, or leave empty */
+  },
+  {
+    cat: 'video',
+    title: 'Arabic Typography Basics',
+    desc: 'Introduction to Arabic type anatomy and spacing.',
+    url: 'https://www.youtube.com/',
+    thumb: ''
+  },
+  {
+    cat: 'video',
+    title: 'Font Pairing Guide',
+    desc: 'How to combine English display + body fonts.',
+    url: 'https://www.youtube.com/',
+    thumb: ''
+  }
+];
+
+/* =========================================================
+   2. CONFIG
+   ========================================================= */
+const META = {
+  'font-en': { label: 'English', cls: 'en'    },
+  'font-ur': { label: 'اردو',    cls: 'ur'    },
+  'font-ar': { label: 'عربي',    cls: 'ar'    },
+  'sound':   { label: 'Sound',   cls: 'sound' },
+  'video':   { label: 'Video',   cls: 'video' }
+};
+
+const FILTERS = [
+  { key: 'all',     label: 'All' },
+  { key: 'font-en', label: 'English Fonts' },
+  { key: 'font-ur', label: 'Urdu Fonts' },
+  { key: 'font-ar', label: 'Arabic Fonts' },
+  { key: 'sound',   label: 'Sounds' },
+  { key: 'video',   label: 'Videos' }
+];
+
+/* =========================================================
+   3. ELEMENTS
+   ========================================================= */
+const grid      = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+const searchEl  = document.getElementById('search');
+const clearBtn  = document.getElementById('clearBtn');
+const toastEl   = document.getElementById('toast');
+const themeBtn  = document.getElementById('themeBtn');
+
+let activeFilter = 'all';
+let query = '';
+
+/* =========================================================
+   4. THEME
+   ========================================================= */
+const savedTheme = localStorage.getItem('fmh-theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+themeBtn.addEventListener('click', () => {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', now);
+  themeBtn.textContent = now === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('fmh-theme', now);
+});
+
+/* =========================================================
+   5. BUILD FILTER CHIPS
+   ========================================================= */
+function buildFilters() {
+  filtersEl.innerHTML = FILTERS.map(f => {
+    const count = f.key === 'all'
+      ? DATA.length
+      : DATA.filter(d => d.cat === f.key).length;
+    return `<button class="chip ${f.key === activeFilter ? 'active' : ''}" data-filter="${f.key}">
+      ${f.label}<span class="count">${count}</span>
+    </button>`;
+  }).join('');
+}
+
+filtersEl.addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  activeFilter = btn.dataset.filter;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === btn));
+  render();
+});
+
+/* =========================================================
+   6. CARD TEMPLATE
+   ========================================================= */
+function buildCard(item, i) {
+  const meta = META[item.cat];
+  const delay = Math.min(i * 45, 500);
+
+  let body = '';
+
+  /* ---- FONT ---- */
+  if (item.cat.startsWith('font-')) {
+    const dirClass = item.cat === 'font-ur' ? 'ur' : item.cat === 'font-ar' ? 'ar' : '';
+    body = `<div class="preview ${dirClass}" style="font-family:${item.font}">${item.text}</div>`;
+  }
+
+  /* ---- SOUND ---- */
+  if (item.cat === 'sound') {
+    body = item.audio
+      ? `<audio controls preload="none" src="${item.url}"></audio>`
+      : `<div class="preview">🎵</div>`;
+  }
+
+  /* ---- VIDEO ---- */
+  if (item.cat === 'video') {
+    body = `<div class="thumb">
+      ${item.thumb ? `<img src="${item.thumb}" alt="${item.title}" loading="lazy">` : ''}
+      <div class="play-ring" style="${item.thumb ? 'position:absolute' : ''}">▶</div>
+    </div>`;
+  }
+
+  return `
+    <article class="card" style="animation-delay:${delay}ms">
+      <div class="card-head">
+        <span class="badge ${meta.cls}">${meta.label}</span>
+        <span class="icon-dot"></span>
+      </div>
+      ${body}
+      <h3>${item.title}</h3>
+      <p class="desc">${item.desc}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="${item.url}" target="_blank" rel="noopener">
+          ${item.cat.startsWith('font-') ? 'Get Font' : item.cat === 'sound' ? 'Open Audio' : 'Watch'}
+        </a>
+        <button class="btn btn-ghost copy-btn" data-url="${item.url}" title="Copy link">🔗</button>
+      </div>
+    </article>`;
+}
+
+/* =========================================================
+   7. RENDER
+   ========================================================= */
+function render() {
+  const q = query.trim().toLowerCase();
+
+  const list = DATA.filter(item => {
+    const matchFilter = activeFilter === 'all' || item.cat === activeFilter;
+    const matchQuery  = !q ||
+      item.title.toLowerCase().includes(q) ||
+      item.desc.toLowerCase().includes(q) ||
+      META[item.cat].label.toLowerCase().includes(q);
+    return matchFilter && matchQuery;
+  });
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty">
+      <div class="big">🔍</div>
+      <p>No results found${q ? ` for “${query}”` : ''}.</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(buildCard).join('');
+}
+
+/* =========================================================
+   8. SEARCH
+   ========================================================= */
+let searchTimer;
+searchEl.addEventListener('input', e => {
+  query = e.target.value;
+  clearBtn.style.display = query ? 'block' : 'none';
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(render, 130);
+});
+
+clearBtn.addEventListener('click', () => {
+  query = '';
+  searchEl.value = '';
+  clearBtn.style.display = 'none';
+  searchEl.focus();
+  render();
+});
+
+/* =========================================================
+   9. COPY LINK
+   ========================================================= */
+grid.addEventListener('click', async e => {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+
+  const url = btn.dataset.url;
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+  }
+
+  btn.textContent = '✓';
+  setTimeout(() => (btn.textContent = '🔗'), 1200);
+  showToast('Link copied to clipboard!');
+});
+
+let toastTimer;
+function showToast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2000);
+}
+
+/* =========================================================
+   10. INIT
+   ========================================================= */
+buildFilters();
+render();
+</script>
+</body>
+</html>
